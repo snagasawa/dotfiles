@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/shuhei/.oh-my-zsh
+export ZSH=/Users/$USER/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -88,6 +88,42 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 # peco
+# function peco-select-history() {
+#     local tac
+#     if which tac > /dev/null; then
+#         tac="tac"
+#     else
+#         tac="tail -r"
+#     fi
+#     BUFFER=$(\history -n 1 | \
+#         eval $tac | \
+#         peco --query "$LBUFFER")
+#     CURSOR=$#BUFFER
+#     zle clear-screen
+# }
+# zle -N peco-select-history
+# bindkey '^r' peco-select-history
+
+# hub
+function git(){hub "$@"}
+
+# Function
+# Gemfile.local
+function use_gemfile_local(){
+  export BUNDLE_GEMFILE='Gemfile.local'
+  echo "Set BUNDLE_GEMFILE"
+}
+
+function unuse_gemfile_local(){
+  unset BUNDLE_GEMFILE
+  echo "Unset BUNDLE_GEMFILE"
+}
+
+function copy_gemfile_local(){
+  cp ~/dropbox/gemfiles/Gemfile.local .
+}
+
+# Peco
 function peco-select-history() {
     local tac
     if which tac > /dev/null; then
@@ -104,5 +140,4 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
-# hub
-function git(){hub "$@"}
+export PATH=/Users/$USER/.nodebrew/current/bin:/Users/$USER/.rbenv/shims:/Users/$USER/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
