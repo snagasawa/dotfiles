@@ -7,6 +7,7 @@ set showmatch
 set laststatus=2
 set list
 set listchars=tab:>-,trail:-,eol:↲
+set autoread
 
 " === Colorscheme ===
 syntax on
@@ -45,6 +46,8 @@ NeoBundle 'alpaca-tc/alpaca_powertabline'
 NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'Lokaltog/powerline-fontpatcher'
 NeoBundle 'slim-template/vim-slim'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'elixir-lang/vim-elixir'
 
 call neobundle#end()
 filetype plugin indent on
