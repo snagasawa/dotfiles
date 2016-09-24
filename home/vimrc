@@ -1,0 +1,47 @@
+" General
+set title
+set ruler
+set cmdheight=2
+set wildmenu
+set showmatch
+set laststatus=2
+set list
+set listchars=tab:>-,trail:-,eol:↲
+set autoread
+
+" Colorscheme
+syntax on
+
+" Line
+set number
+set wrap
+
+" Tab
+set tabstop=2
+set expandtab
+set shiftwidth=2
+
+" Indentation
+set autoindent
+set smartindent
+
+" Search
+set smartcase
+set hlsearch
+set incsearch
+
+" dein.vim
+if &compatible
+    set nocompatible
+endif
+set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim
+
+call dein#begin(expand('~/.vim/'))
+
+call dein#add('~/.vim/repos/github.com/Shougo/dein.vim')
+call dein#add('Shougo/neocomplete.vim')
+
+call dein#end()
+
+filetype plugin indent on
+syntax enable
