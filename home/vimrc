@@ -38,10 +38,17 @@ set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.vim/'))
 
-call dein#add('~/.vim/repos/github.com/Shougo/dein.vim')
+call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/neocomplete.vim')
+call dein#add('tpope/vim-rails')
+call dein#add('tpope/vim-haml')
+call dein#add('scrooloose/nerdtree')
 
 call dein#end()
+
+if dein#check_install()
+    call dein#install()
+end
 
 filetype plugin indent on
 syntax enable
