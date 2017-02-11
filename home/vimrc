@@ -8,6 +8,7 @@ set laststatus=2
 set list
 set listchars=tab:>-,trail:-,eol:↲
 set autoread
+set noswapfile
 
 " Colorscheme
 syntax on
@@ -18,8 +19,9 @@ set wrap
 
 " Tab
 set tabstop=2
-set expandtab
 set shiftwidth=2
+set expandtab
+set smarttab
 
 " Indentation
 set autoindent
@@ -30,25 +32,74 @@ set smartcase
 set hlsearch
 set incsearch
 
-" dein.vim
-if &compatible
-    set nocompatible
-endif
-set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim
+" --------------------
+" vim-plug
+" --------------------
+call plug#begin('~/.vim/plugged')
 
-call dein#begin(expand('~/.vim/'))
+" Utility
+Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/unite.vim'
 
-call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/neocomplete.vim')
-call dein#add('tpope/vim-rails')
-call dein#add('tpope/vim-haml')
-call dein#add('scrooloose/nerdtree')
+Plug 'junegunn/vim-github-dashboard'
+Plug 'junegunn/vim-emoji'
+Plug 'junegunn/fzf.vim'
 
-call dein#end()
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+autocmd vimenter * NERDTree
+map <C-n> :NERDTreeToggle<CR>
 
-if dein#check_install()
-    call dein#install()
-end
+Plug 'alpaca-tc/alpaca_tags'
+Plug 'szw/vim-tags'
+Plug 'majutsushi/tagbar'
+map <C-t> :TagbarToggle<CR>
 
-filetype plugin indent on
-syntax enable
+Plug 'thinca/vim-ref'
+Plug 'yuku-t/vim-ref-ri'
+
+Plug 'tpope/vim-endwise'
+let g:indent_guides_enable_on_vim_startup = 1
+Plug 'vim-scripts/AnsiEsc.vim'
+Plug 'tomtom/tcomment_vim'
+
+Plug 'tpope/vim-fugitive'
+autocmd QuickFixCmdPost *grep* cwindow
+set statusline+=%{fugitive#statusline()}
+Plug 'terryma/vim-multiple-cursors'
+
+" Ruby
+Plug 'vim-ruby/vim-ruby'
+Plug 'marcus/rsense'
+let g:rsenseHome = "/Users/snagasawa/.rbenv/shims/rsense"
+let g:rsenseUseOmniFunc = 1
+Plug 'scrooloose/syntastic'
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
+Plug 'tpope/vim-rails'
+
+" Go
+Plug 'fatih/vim-go'
+Plug 'nsf/gocode'
+
+" Scala
+Plug 'derekwyatt/vim-scala'
+
+" Javascript
+Plug 'pangloss/vim-javascript'
+Plug 'elzr/vim-json'
+Plug 'kchmck/vim-coffee-script'
+Plug 'moll/vim-node'
+Plug 'myhere/vim-nodejs-complete'
+Plug 'digitaltoad/vim-pug'
+
+" HTML
+Plug 'taichouchou2/html5.vim'
+Plug 'tpope/vim-haml'
+Plug 'slim-template/vim-slim'
+
+" CSS
+Plug 'hail2u/vim-css3-syntax'
+
+call plug#end()
