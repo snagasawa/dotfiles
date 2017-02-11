@@ -49,7 +49,7 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 autocmd vimenter * NERDTree
-map <C-n> :NERDTreeToggle<CR>
+map <C-e> :NERDTreeToggle<CR>
 
 Plug 'alpaca-tc/alpaca_tags'
 Plug 'szw/vim-tags'
