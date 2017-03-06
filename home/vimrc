@@ -48,13 +48,10 @@ Plug 'junegunn/vim-emoji'
 Plug 'junegunn/fzf.vim'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-autocmd vimenter * NERDTree
-map <C-e> :NERDTreeToggle<CR>
 
 Plug 'alpaca-tc/alpaca_tags'
 Plug 'szw/vim-tags'
 Plug 'majutsushi/tagbar'
-map <C-t> :TagbarToggle<CR>
 
 Plug 'thinca/vim-ref'
 Plug 'yuku-t/vim-ref-ri'
@@ -93,6 +90,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'moll/vim-node'
 Plug 'myhere/vim-nodejs-complete'
 Plug 'digitaltoad/vim-pug'
+Plug 'mxw/vim-jsx'
 
 " HTML
 Plug 'taichouchou2/html5.vim'
