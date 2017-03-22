@@ -32,6 +32,10 @@ set smartcase
 set hlsearch
 set incsearch
 
+" statusline
+set statusline=%f%m%r%h%w\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set laststatus=2
+
 " --------------------
 " vim-plug
 " --------------------
@@ -41,17 +45,26 @@ call plug#begin('~/.vim/plugged')
 Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/unite.vim'
+let g:python3_host_prog = expand("/Users/${USER}/.pyenv/shims/python")
+Plug 'Shougo/denite.nvim'
+nnoremap <space>g :Denite grep<CR>
+nnoremap <space>r :Denite -resume<CR>
+if executable('ag')
+  let g:denite_source_grep_command = 'ag'
+endif
 
 Plug 'junegunn/vim-github-dashboard'
 Plug 'junegunn/vim-emoji'
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+nnoremap <space>f :FZF<CR>
 
+Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-
+nnoremap <space>n :NERDTreeToggle<CR>
 Plug 'alpaca-tc/alpaca_tags'
 Plug 'szw/vim-tags'
 Plug 'majutsushi/tagbar'
+nnoremap <space>t :Tagbar<CR>
 
 Plug 'thinca/vim-ref'
 Plug 'yuku-t/vim-ref-ri'
@@ -63,7 +76,6 @@ Plug 'tomtom/tcomment_vim'
 
 Plug 'tpope/vim-fugitive'
 autocmd QuickFixCmdPost *grep* cwindow
-set statusline+=%{fugitive#statusline()}
 Plug 'terryma/vim-multiple-cursors'
 
 " Ruby

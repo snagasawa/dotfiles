@@ -48,6 +48,7 @@ eval "$(rbenv init -)"
 [ -f ~/.zshrc.aliases ] && source ~/.zshrc.aliases
 
 alias be='bundle exec'
+alias vfzf='vim $(fzf)'
 
 # activator
 export PATH="/usr/local/bin/activator:$PATH"
@@ -67,3 +68,7 @@ export PATH=$PATH:$GOPATH/bin
 
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='--height 40%'
