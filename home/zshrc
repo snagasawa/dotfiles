@@ -72,3 +72,6 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--height 40%'
+
+# brewfile
+export HOMEBREW_BREWFILE=$HOME/google_drive/brewfile/Brewfile
