@@ -103,6 +103,9 @@ Plug 'moll/vim-node'
 Plug 'myhere/vim-nodejs-complete'
 Plug 'digitaltoad/vim-pug'
 Plug 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'leafgarland/typescript-vim'
 
 " HTML
 Plug 'taichouchou2/html5.vim'
@@ -116,6 +119,5 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled = 1
-
 
 call plug#end()
