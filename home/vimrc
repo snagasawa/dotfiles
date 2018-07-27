@@ -36,15 +36,63 @@ set incsearch
 set statusline=%f%m%r%h%w\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set laststatus=2
 
-" --------------------
-" vim-plug
-" --------------------
+
+" ----------------------------------------------------------------
+" # vim-plug
+" ----------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
 
-" Utility
+
+" ----------------------------------------------------------------
+" ## Asynchronous Completion
+" ----------------------------------------------------------------
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+
+" ----------------------------------------------------------------
+" ## Snippet
+" ----------------------------------------------------------------
 Plug 'Shougo/neocomplete.vim'
-Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+
+" ----------------------------------------------------------------
+" ## Git
+" ----------------------------------------------------------------
+Plug 'airblade/vim-gitgutter'
+let g:gitgutter_terminal_reports_focus = 0
+
+" --------------------
+"
+" --------------------
 let g:python3_host_prog = expand("/Users/${USER}/.pyenv/shims/python")
 Plug 'Shougo/denite.nvim'
 nnoremap <space>g :Denite grep<CR>
@@ -83,9 +131,6 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'marcus/rsense'
 let g:rsenseHome = "/Users/snagasawa/.rbenv/shims/rsense"
 let g:rsenseUseOmniFunc = 1
-Plug 'scrooloose/syntastic'
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
-let g:syntastic_ruby_checkers = ['rubocop']
 Plug 'tpope/vim-rails'
 
 " Go
@@ -106,6 +151,14 @@ Plug 'mxw/vim-jsx'
 let g:jsx_ext_required = 0
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'leafgarland/typescript-vim'
+
+" ESLint
+Plug 'w0rp/ale'
+let g:ale_completion_enabled = 1
+
+" Vue
+Plug 'posva/vim-vue'
+autocmd FileType vue syntax sync fromstart
 
 " HTML
 Plug 'taichouchou2/html5.vim'

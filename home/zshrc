@@ -41,7 +41,7 @@ bindkey '^r' peco-select-history
 export PATH=/usr/local/bin:$PATH
 
 # rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
 
 # aliases
@@ -77,3 +77,9 @@ export PATH=${PATH}:${ANDROID_SDK_ROOT}/platform-tools
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--height 40%'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/shuhei/sdk/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/shuhei/sdk/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/shuhei/sdk/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/shuhei/sdk/google-cloud-sdk/completion.zsh.inc'; fi
