@@ -32,15 +32,22 @@ set smartcase
 set hlsearch
 set incsearch
 
-" statusline
-set statusline=%f%m%r%h%w\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-set laststatus=2
-
 
 " ----------------------------------------------------------------
 " # vim-plug
 " ----------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
+
+
+" ----------------------------------------------------------------
+" ## Status Line
+" ----------------------------------------------------------------
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
 
 
 " ----------------------------------------------------------------
@@ -155,6 +162,7 @@ Plug 'leafgarland/typescript-vim'
 " ESLint
 Plug 'w0rp/ale'
 let g:ale_completion_enabled = 1
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
 " Vue
 Plug 'posva/vim-vue'
