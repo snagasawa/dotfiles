@@ -163,6 +163,9 @@ Plug 'leafgarland/typescript-vim'
 Plug 'w0rp/ale'
 let g:ale_completion_enabled = 1
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+let g:ale_javascript_eslint_executable = 'eslint'
+let g:ale_javascript_eslint_use_global = 0
+let g:ale_linters = { 'ruby': ['rubocop'], 'javascript': ['eslint'], }
 
 " Vue
 Plug 'posva/vim-vue'
