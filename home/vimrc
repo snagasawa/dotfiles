@@ -9,6 +9,7 @@ set list
 set listchars=tab:>-,trail:-,eol:↲
 set autoread
 set noswapfile
+set encoding=UTF-8
 
 " Colorscheme
 syntax on
@@ -37,6 +38,12 @@ set incsearch
 " # vim-plug
 " ----------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
+
+
+" ----------------------------------------------------------------
+" ## Icons
+" ----------------------------------------------------------------
+Plug 'ryanoasis/vim-devicons'
 
 
 " ----------------------------------------------------------------
